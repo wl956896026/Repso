@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyHtml.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript">
+		function show(){
+			//JSON格式的字符串
+			var jsonStr = "name";
+			alert(jsonStr);
+		}
+		/*
+			JSON对象
+		*/
+		function showObj(){
+			//创建一个JSON对象
+			var jsonObj = {"username":"admin","password":"123321","age":22};
+			alert(jsonObj.username+"   "+jsonObj.password+"  "+jsonObj.age);
+		}
+		/**JSON集合*/
+		function showArr(){
+			//声明一个JSON数组
+			var jsonArr = [
+							{"username":"admin","password":"123321","age":22},
+							{"username":"admin1","password":"123321","age":23},
+							{"username":"admin2","password":"123321","age":24},
+							{"username":"admin3","password":"123321","age":25},
+							{"username":"admin4","password":"123321","age":26}	
+						];
+			alert(jsonArr[3].username);
+		}
+		
+	</script>
+  </head>
+  
+  <body>
+    <input type="button" value="json字符串" onclick="show()"/>
+    <input type="button" value="json字符串" onclick="showObj()"/>
+    <input type="button" value="json字符串" onclick="showArr()"/>
+  </body>
+</html>

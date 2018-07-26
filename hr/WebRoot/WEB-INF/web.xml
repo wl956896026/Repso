@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+  <welcome-file-list>
+  
+    <welcome-file>emp.do?operate=autoLogin</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    
+  </welcome-file-list>
+  
+  
+  
+  
+  
+  <!-- 过滤器配置 -->
+  <!-- <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>com.hr.web.filters.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	配置过滤器的过滤路径
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+  
+  
+  
+  
+   <!--  <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.hr.web.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping> -->
+    <servlet>
+        <servlet-name>exitServlet</servlet-name>
+        <servlet-class>com.hr.web.servlets.ExitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>exitServlet</servlet-name>
+        <url-pattern>/exitServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+    	<servlet-name>queryEmpServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.QueryEmpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>queryEmpServlet</servlet-name>
+    	<url-pattern>/queryEmpServlet</url-pattern>
+    </servlet-mapping>
+     <servlet>
+    	<servlet-name>urlServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.URLDemoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>urlServlet</servlet-name>
+    	<url-pattern>/urlOverride/urlServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    <servlet>
+    	<servlet-name>hideServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.HideServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>hideServlet</servlet-name>
+    	<url-pattern>/hideFormDemo/hideServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    
+    <servlet>
+    	<servlet-name>addCookieServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.AddCookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>addCookieServlet</servlet-name>
+    	<url-pattern>/cookies/addCookieServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+    	<servlet-name>readCookieServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.ReadCookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>readCookieServlet</servlet-name>
+    	<url-pattern>/cookies/readCookieServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+    	<servlet-name>deleteCookieServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.DeleteCookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>deleteCookieServlet</servlet-name>
+    	<url-pattern>/cookies/deleteCookieServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+  <!--   <servlet>
+    	<servlet-name>autoLoginServlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.AutoLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>autoLoginServlet</servlet-name>
+    	<url-pattern>/autoLoginServlet</url-pattern>
+    </servlet-mapping> -->
+    
+    
+    
+    <servlet>
+    	<servlet-name>elDemo2Servlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.ElDemo2Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>elDemo2Servlet</servlet-name>
+    	<url-pattern>/elDemo/elDemo2Servlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+    	<servlet-name>elDemo3Servlet</servlet-name>
+    	<servlet-class>com.hr.web.servlets.ELDemo3Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>elDemo3Servlet</servlet-name>
+    	<url-pattern>/elDemo/elDemo3Servlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+    	<servlet-name>queryDeptPosition</servlet-name>
+    	<servlet-class>com.hr.web.servlets.QueryDeptAndPostion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>queryDeptPosition</servlet-name>
+    	<url-pattern>/queryDeptPosition</url-pattern>
+    </servlet-mapping>
+</web-app>

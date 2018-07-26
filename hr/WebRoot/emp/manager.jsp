@@ -40,7 +40,7 @@ th {
 <script type="text/javascript">
 	function search() {
 		var empName = document.getElementById("search").value;
-		location.href = "${pageContext.servletContext.contextPath}/emp/emp.do?operate=queryEmp&empName="
+		location.href = "${pageContext.servletContext.contextPath}/emp/emp.do?operate=queryEmpPagin&empName="
 				+ empName;
 	}
 	/**
@@ -174,6 +174,54 @@ th {
 					</tr>
 
 				</c:forEach>
+				<tr>
+					<td colspan="12">
+					<!-- 动态显示首页和上一页 -->
+						<c:choose>
+							<c:when test="${requestScope.paginEmp.curPage==1}">
+								首页&nbsp;&nbsp;上一页&nbsp;&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin&pageNum=1">首页</a>&nbsp;&nbsp;
+								<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin&pageNum=${requestScope.paginEmp.curPage-1}">上一页</a>&nbsp;&nbsp;	
+							</c:otherwise>
+						</c:choose>
+						
+						
+						<c:choose>
+							<c:when test="${requestScope.paginEmp.curPage==requestScope.paginEmp.countPage}">
+								下一页&nbsp;&nbsp;尾页&nbsp;&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin&pageNum=${requestScope.paginEmp.curPage+1}">下一页</a>&nbsp;&nbsp;
+						<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin&pageNum=${requestScope.paginEmp.countPage}">尾页</a>&nbsp;&nbsp;	
+							</c:otherwise>
+						</c:choose>
+						
+						
+						共${requestScope.paginEmp.countPage}页数&nbsp;&nbsp;当前第${requestScope.paginEmp.curPage}页&nbsp;&nbsp;
+						<input type="text" size="2" id="go"/>&nbsp;<input type="button" onclick="go()" value="GO"/>
+						<script>
+							function go(){
+								//获得文本框的数据
+								var pageNum = document.getElementById("go").value;
+								//判断pageNum是否为数字
+								if(pageNum==""){
+									alert("请输入页码!");
+								}else if(isNaN(pageNum)){
+									alert("请输入合法的页码!");
+								}else if(pageNum.indexOf(".")!=-1){
+									alert("页码不能为小数!");
+								}else if(pageNum<1 || pageNum>${requestScope.paginEmp.countPage}){
+									alert("请输入正确的页码!");
+								}else{
+									location="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin&pageNum="+pageNum;
+								}
+														
+							}
+						</script>
+					</td>
+				</tr>
 			</table>
 		</c:otherwise>
 	</c:choose>

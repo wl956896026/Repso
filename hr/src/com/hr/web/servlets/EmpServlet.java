@@ -25,13 +25,13 @@ import org.apache.commons.io.IOUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONSerializer;
 
-import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 import com.hr.dao.DeptDao;
 import com.hr.dao.EmpDao;
 import com.hr.dao.PositionDao;
 import com.hr.dao.impl.DeptDaoImpl;
 import com.hr.dao.impl.EmpDaoImpl;
+import com.hr.dao.impl.PaginEmp;
 import com.hr.dao.impl.PositionDaoImpl;
 import com.hr.entity.Dept;
 import com.hr.entity.Emp;
@@ -120,6 +120,52 @@ public class EmpServlet extends BaseServlet {
 			emps = empDao.queryEmp();
 		}
 
+		// 将获得到的存有员工数据的list集合存入到request中
+		request.setAttribute("emps", emps);
+		// 请求转发到manager.jsp页面
+		request.getRequestDispatcher("manager.jsp").forward(request, response);
+
+	}
+	
+	
+	
+	/***
+	 * 分页查询Servlet
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void queryEmpPagin(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		PaginEmp paginEmp = new PaginEmp();
+		//设置总页数
+				paginEmp.setCountPage();
+		String empName = request.getParameter("empName");
+		//获取页面传入的待查询的页码
+		String pageNums = request.getParameter("pageNum");
+		//设置默认页码
+		int pageNum = 1;
+		//判断页面是否传入页码
+		if(pageNums!=null && !pageNums.equals("")){
+			pageNum = Integer.parseInt(pageNums);
+		}
+		if(pageNum<1 || pageNum>paginEmp.getCountPage()){
+			pageNum = 1;
+		}
+		
+		List<Object[]> emps = null;
+		if (empName != null && !empName.equals("")) {
+			empName = new String(empName.getBytes("iso-8859-1"), "UTF-8");
+			emps = paginEmp.queryEmp(pageNum, empName);
+		} else {
+			emps = paginEmp.queryEmp(pageNum);
+		}
+		//设置当前页
+		paginEmp.setCurPage(pageNum);
+		
+		//将pageEmp对象存入到request中
+		request.setAttribute("paginEmp", paginEmp);
 		// 将获得到的存有员工数据的list集合存入到request中
 		request.setAttribute("emps", emps);
 		// 请求转发到manager.jsp页面

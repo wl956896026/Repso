@@ -110,7 +110,7 @@
   		</tr>
   		<tr>
   			<td colspan="8">
-  				<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmp">返回</a>&nbsp;&nbsp;
+  				<a href="${pageContext.servletContext.contextPath }/emp/emp.do?operate=queryEmpPagin">返回</a>&nbsp;&nbsp;
   				<a href="">冻结账户</a>&nbsp;&nbsp;
   				<a href="">离职</a>&nbsp;&nbsp;
   			</td>

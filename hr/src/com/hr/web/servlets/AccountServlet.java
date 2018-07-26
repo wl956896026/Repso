@@ -81,7 +81,7 @@ public class AccountServlet extends BaseServlet {
 						if(emp.getPosition_id()==4){//人事专员
 							//response.sendRedirect("manager.jsp");
 							//跳到查询员工信息的Servlet
-							request.getRequestDispatcher("emp/emp.do?operate=queryEmp").forward(request, response);
+							request.getRequestDispatcher("emp/emp.do?operate=queryEmpPagin").forward(request, response);
 						}else{//其他工作人员
 							response.sendRedirect("other.jsp");
 						}
